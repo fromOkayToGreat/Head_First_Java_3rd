@@ -267,6 +267,73 @@ An array is an **object** that holds a fixed number of values of a single type. 
 - An array is always an object, even if the array is declared with a primitive type.
 
 
+# Chapter 4: How Objects Behave
 
+## You can send things to a method
 
+Terms "arguments" or "parameters" are used interchangeably to refer to the values that are passed to a method.  The values are passed to the method by the caller.  The values are received by the method by the method's parameters.  The values are passed by value.  That means that the method receives a copy of the value.  The method can't change the value of the argument.
 
+**A caller passes arguments to a method.  A method receives arguments as parameters.**
+
+A **parameter** is just a local variable with a type and name that can be used inside the body of the method.
+
+If a method takes a paremeter, you must pass it an argument when you call the method.  If a method doesn't take a parameter, you can't pass it an argument when you call the method.
+
+Methods may have multiple parameters.  The parameters are separated by commas.  The order of the parameters is important.
+
+## You can get things back from a method
+
+A method can return a value to the caller.  The value is returned by using the `return` keyword.  The value must be of the same type as the method's return type (or a value that is *compatible* with the declared type).  If the method's return type is `void`, then the method can't return a value.
+
+## Java is a pass-by-value
+
+When you pass a value to a method, the method receives a copy of the value.  The method can't change the value of the argument.  The method can change the value of a variable that is a parameter, but that change is not reflected in the caller.
+
+## Encapsulation
+
+Encapsulation starter rule of thumb:  **If you don't want something to be changed, don't make it public.**  Mark instace variables as private and provide public methods to access them.  This is called **encapsulation**.  Encapsulation is a way to hide the implementation details of an object and only expose the parts that are necessary for other objects to use.
+
+Using methods to get and set instance variables is called **accessor methods**.  One their major benefits is that they allow you to change the implementation of the instance variables without breaking the code that uses the object.
+
+## Default instace variable values
+
+If you don't explicitly assign a value to an isntance variable or call a setter method, the instance variable will get a default value.
+
+| Type | Default value |
+| --- | --- |
+| boolean | false |
+| byte, short, int, long | 0 |
+| float, double | 0.0 |
+| char | '\u0000' |
+| reference | null |
+
+### Differences between instance and local variables
+
+1. Instance variables are declared inside a class but not inside a method.
+2. Local variables are declared inside a method.
+3. Local variables *must* be initialized before they are used.
+
+Local varibles do NOT get a default value.  The compiler will not let you use a local variable until it has been initialized.
+
+## Comparing variables
+
+Use the `==` to compare two primitives or to see if two reference variables point to the same object.  Use the `equals()` method to compare the values of two objects (two different String objects that contain "Hello").
+
+## TAKEAWAYS
+
+- Classes define what an object knows and what an object does.
+- Things an objects knows are called *instance variables.*
+- Things an objects does are its *methods.*
+- Methods can use instance variables so that objects of the same type can behave differently.
+- A method can have parameters, which means you can pass one or more values in to the method.
+- The number and type of values you pass in must match the order and type of the paremeters declared by the method.
+- Values passed in and out of methods can be implicitly promoted to a larger type or explicitly cast to a smaller type.
+- The value you pass as an argument to a method can be a literal value (`2`, `"string"`) or a variable (`x`, `y`).
+- A method must declare a return type.  A void return type means the method doesn't return anything.
+- If a method declares a non-void return type, it must return a value compatible with the declared type.
+- Encapsulation gives you control over who changes the data in your class and how.
+- Make an instance variables private so it can't be changed by accessing the variable directly.
+- Create a public mutator method (a setter) to control how other code interacts with your data.  For example, you can add validation code inside a setter to make sure the value isn't changed to something invalid.
+- Instance variables are assigned values by default, even if you don't set them explicitly.
+- Use `==` to chcek if two primitives are equal or if two reference variables point to the same object.
+- Use `equals()` to check if two objects are equivalent (but not necessarily the same object).
